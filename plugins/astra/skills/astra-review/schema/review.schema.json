@@ -1,0 +1,69 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["round", "verdict", "summary", "issues", "previous_issues", "verified", "not_checked"],
+  "properties": {
+    "round": { "type": "integer", "description": "本轮编号" },
+    "verdict": {
+      "type": "string",
+      "enum": ["accept", "minor_revision", "major_revision", "reject"],
+      "description": "accept=可以接受；minor_revision=小修；major_revision=结论或证据有重要缺陷；reject=结论不成立"
+    },
+    "summary": { "type": "string", "description": "三到五句话的总体评价" },
+    "issues": {
+      "type": "array",
+      "description": "本轮新发现的问题",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "severity", "category", "title", "location", "problem", "evidence", "suggestion", "confidence"],
+        "properties": {
+          "id": { "type": "string", "description": "A1、A2……，跨轮次连续编号" },
+          "severity": { "type": "string", "enum": ["critical", "major", "minor"] },
+          "category": {
+            "type": "string",
+            "enum": ["correctness", "evidence", "methodology", "consistency", "completeness", "memory", "clarity", "other"]
+          },
+          "title": { "type": "string", "description": "一句话概括" },
+          "location": { "type": "string", "description": "被质疑内容在哪里：文件路径 + 行号/章节/字段" },
+          "problem": { "type": "string", "description": "问题是什么" },
+          "evidence": { "type": "string", "description": "支撑判断的证据：文件路径+行号、引文、执行的命令及输出" },
+          "suggestion": { "type": "string", "description": "具体怎么改" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        }
+      }
+    },
+    "previous_issues": {
+      "type": "array",
+      "description": "复审时对上一轮每个问题的判定；第 1 轮为空数组",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status", "comment"],
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "type": "string", "enum": ["resolved", "partially_resolved", "unresolved", "withdrawn"] },
+          "comment": { "type": "string", "description": "核对了什么、依据是什么" }
+        }
+      }
+    },
+    "verified": {
+      "type": "array",
+      "description": "核对过且成立的说法",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim", "how"],
+        "properties": {
+          "claim": { "type": "string" },
+          "how": { "type": "string", "description": "怎么核对的：读了哪个文件、算了什么" }
+        }
+      }
+    },
+    "not_checked": {
+      "type": "array",
+      "description": "没能核对的内容和原因",
+      "items": { "type": "string" }
+    }
+  }
+}
