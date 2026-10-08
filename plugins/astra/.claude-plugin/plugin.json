@@ -1,0 +1,5 @@
+{
+  "name": "astra",
+  "description": "让 Codex 里的 GPT-6-Astra 独立审核 Claude 的工作成果（只读），Claude 逐条核实后改进，并记录审核记分表。走 ChatGPT 订阅，不用 API key。仅支持 Windows。",
+  "author": { "name": "Fu-Yiheng" }
+}
