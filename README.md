@@ -15,23 +15,18 @@
 
 三种方式任选一种。
 
-### 方式一：从 GitHub 安装（之后能收到更新）
+### 方式一：从 GitHub 安装（推荐，之后能收到更新）
 
-这个仓库是**私有**的，只有被邀请的人能装：
+在 Claude Code 的对话框里依次输入：
 
-1. **接受邀请**：把你的 GitHub 用户名告诉作者。作者邀请你之后，你会收到邮件或 GitHub 通知，点 **Accept invitation**。
-2. **让电脑记住你的 GitHub 登录**（只需做一次）：打开 Git Bash，运行
-   ```bash
-   git clone https://github.com/Fu-Yiheng/opus-astra-review "$TEMP/astra-review-test"
-   ```
-   会弹出 GitHub 登录窗口，选 **Sign in with your browser** 并授权。克隆成功就说明可以了，这个临时文件夹之后可以删掉。
-   这一步是必须的：Claude Code 安装插件时不会弹登录窗口，只会用电脑里已经保存的登录信息。
-3. 在 Claude Code 的对话框里依次输入：
-   ```
-   /plugin marketplace add Fu-Yiheng/opus-astra-review
-   /plugin install astra@astra-review
-   ```
-   第一条报错的话，改用完整地址：`/plugin marketplace add https://github.com/Fu-Yiheng/opus-astra-review.git`
+```
+/plugin marketplace add Fu-Yiheng/opus-astra-review
+/plugin install astra@astra-review
+```
+
+- 第一条报错的话，改用完整地址：`/plugin marketplace add https://github.com/Fu-Yiheng/opus-astra-review.git`
+- 第二条里 `@` 后面的 `astra-review` 是插件目录的名字，不是仓库名，照抄即可
+- 连不上 GitHub（国内有时会这样）就用方式二
 
 装完重启 Claude Code，或者输入 `/reload-plugins`。
 
@@ -40,7 +35,8 @@
 
 ### 方式二：从本地文件夹安装（不需要 GitHub 账号）
 
-向作者要 `astra-review.zip`，解压后把整个 `astra-review` 文件夹放到一个**不会删掉**的位置（例如 `D:\tools\astra-review`），然后在 Claude Code 里输入：
+在仓库首页点绿色的 **Code** → **Download ZIP** 下载（或者向作者要 zip），解压后把文件夹放到一个**不会删掉**的位置，例如 `D:\tools\astra-review`。
+确认这个文件夹里直接就有 `.claude-plugin` 和 `plugins` 两个子文件夹，然后在 Claude Code 里输入：
 
 ```
 /plugin marketplace add D:/tools/astra-review
