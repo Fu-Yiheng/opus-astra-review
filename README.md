@@ -22,16 +22,16 @@
 1. **接受邀请**：把你的 GitHub 用户名告诉作者。作者邀请你之后，你会收到邮件或 GitHub 通知，点 **Accept invitation**。
 2. **让电脑记住你的 GitHub 登录**（只需做一次）：打开 Git Bash，运行
    ```bash
-   git clone https://github.com/Fu-Yiheng/astra-review "$TEMP/astra-review-test"
+   git clone https://github.com/Fu-Yiheng/opus-astra-review "$TEMP/astra-review-test"
    ```
    会弹出 GitHub 登录窗口，选 **Sign in with your browser** 并授权。克隆成功就说明可以了，这个临时文件夹之后可以删掉。
    这一步是必须的：Claude Code 安装插件时不会弹登录窗口，只会用电脑里已经保存的登录信息。
 3. 在 Claude Code 的对话框里依次输入：
    ```
-   /plugin marketplace add Fu-Yiheng/astra-review
+   /plugin marketplace add Fu-Yiheng/opus-astra-review
    /plugin install astra@astra-review
    ```
-   第一条报错的话，改用完整地址：`/plugin marketplace add https://github.com/Fu-Yiheng/astra-review.git`
+   第一条报错的话，改用完整地址：`/plugin marketplace add https://github.com/Fu-Yiheng/opus-astra-review.git`
 
 装完重启 Claude Code，或者输入 `/reload-plugins`。
 
